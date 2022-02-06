@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  nginx:
+    container_name: yii2-api-template-nginx
+    ports:
+      - 8080:8080
+    image: nginx:stable-alpine
+    volumes:
+      - ./:/app
+      - ./docker/nginx:/etc/nginx/conf.d
+    depends_on:
+      - php
+
+  php:
+    container_name: yii2-api-template-php
+    build: ./docker/php
+    volumes:
+      - ./:/app
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  db:
+    container_name: yii2-api-template-db
+    build: ./docker/postgres
+    ports:
+      - 5432:5432
+    restart: always
+    volumes:
+      - yii2-api-template-db-data:/var/lib/postgresql/data
+
+volumes:
+  yii2-api-template-db-data:
