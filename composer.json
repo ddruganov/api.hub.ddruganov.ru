@@ -11,7 +11,8 @@
   "require": {
     "php": "^8",
     "yiisoft/yii2": "^2",
-    "ddruganov/yii2-api-auth": "^1"
+    "ddruganov/yii2-api-auth": "^1",
+    "webonyx/graphql-php": "^14.11"
   },
   "config": {
     "process-timeout": 1800,
