@@ -30,7 +30,7 @@ final class QueryGql extends ObjectType
                 'permission' => [
                     'type' => GraphqlTypes::listOf(GraphqlTypes::permissionType()),
                     'resolve' => function () {
-                        return Permission::find()->orderBy(['id' => SORT_ASC])->all();
+                        return Permission::find()->orderBy(['name' => SORT_ASC])->all();
                     }
                 ]
             ]

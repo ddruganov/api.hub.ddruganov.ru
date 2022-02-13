@@ -7,6 +7,7 @@ use ddruganov\Yii2ApiAuth\models\rbac\Permission;
 use ddruganov\Yii2ApiAuth\models\rbac\Role;
 use ddruganov\Yii2ApiAuth\models\rbac\RoleHasPermission;
 use GraphQL\Type\Definition\ObjectType;
+use yii\db\Query;
 
 final class RoleGql extends ObjectType
 {
@@ -33,6 +34,18 @@ final class RoleGql extends ObjectType
                             ])
                             ->orderBy(['permission.id' => SORT_ASC])
                             ->all();
+                    }
+                ],
+                'permissionIds' => [
+                    'type' => GraphqlTypes::listOf(GraphqlTypes::int()),
+                    'resolve' => function (Role $role) {
+                        return (new Query())
+                            ->select(['permission_id'])
+                            ->from(RoleHasPermission::tableName())
+                            ->where([
+                                'role_id' => $role->getId()
+                            ])
+                            ->column();
                     }
                 ]
             ]
