@@ -14,25 +14,22 @@ final class QueryGql extends ObjectType
             'fields' => fn () => [
                 'roles' => [
                     'type' => GraphqlTypes::listOf(GraphqlTypes::roleType()),
-                    'resolve' => function () {
-                        return Role::find()->orderBy(['id' => SORT_ASC])->all();
-                    }
+                    'resolve' => fn () => Role::find()->orderBy(['id' => SORT_ASC])->all()
                 ],
                 'role' => [
                     'type' => GraphqlTypes::roleType(),
-                    'args' => [
-                        'id' => GraphqlTypes::nonNull(GraphqlTypes::int()),
-                    ],
-                    'resolve' => function ($_, $args) {
-                        return Role::findOne($args['id']);
-                    }
+                    'args' => ['id' => GraphqlTypes::nonNull(GraphqlTypes::int())],
+                    'resolve' => fn ($_, $args) => Role::findOne($args['id'])
+                ],
+                'permissions' => [
+                    'type' => GraphqlTypes::listOf(GraphqlTypes::permissionType()),
+                    'resolve' => fn () => Permission::find()->orderBy(['name' => SORT_ASC])->all()
                 ],
                 'permission' => [
-                    'type' => GraphqlTypes::listOf(GraphqlTypes::permissionType()),
-                    'resolve' => function () {
-                        return Permission::find()->orderBy(['name' => SORT_ASC])->all();
-                    }
-                ]
+                    'type' => GraphqlTypes::permissionType(),
+                    'args' => ['id' => GraphqlTypes::nonNull(GraphqlTypes::int())],
+                    'resolve' => fn ($_, $args) => Permission::findOne($args['id'])
+                ],
             ]
         ];
 
