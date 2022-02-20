@@ -4,6 +4,7 @@ namespace api\graphql;
 
 use api\graphql\rbac\PermissionGql;
 use api\graphql\rbac\RoleGql;
+use api\graphql\user\UserGql;
 use GraphQL\Type\Definition\Type;
 
 class GraphqlTypes extends Type
@@ -23,5 +24,10 @@ class GraphqlTypes extends Type
     public static function permissionType(): PermissionGql
     {
         return (self::$types['permission'] ??= new PermissionGql());
+    }
+
+    public static function userType(): UserGql
+    {
+        return (self::$types['user'] ??= new UserGql());
     }
 }

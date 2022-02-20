@@ -11,8 +11,9 @@ final class AuthController extends BaseAuthController
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        $behaviors['rbac']['rules'] += [
-            'current-user' => 'authenticate'
+        $behaviors['rbac']['rules'] = [
+            'logout' => 'hub.authenticate',
+            'current-user' => 'hub.authenticate',
         ];
         return $behaviors;
     }

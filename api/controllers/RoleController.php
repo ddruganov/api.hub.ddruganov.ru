@@ -17,9 +17,9 @@ final class RoleController extends SecureApiController
             'rbac' => [
                 'class' => RbacFilter::class,
                 'rules' => [
-                    'create' => 'role.create',
-                    'update' => 'role.edit',
-                    'delete' => 'role.delete',
+                    'create' => 'hub.role.create',
+                    'update' => 'hub.role.edit',
+                    'delete' => 'hub.role.delete',
                 ]
             ]
         ]);

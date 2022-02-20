@@ -2,14 +2,14 @@
 
 namespace api\controllers;
 
-use api\forms\permission\CreateForm;
-use api\forms\permission\DeleteForm;
-use api\forms\permission\UpdateForm;
+use api\forms\user\CreateForm;
+use api\forms\user\DeleteForm;
+use api\forms\user\UpdateForm;
 use ddruganov\Yii2ApiAuth\http\controllers\SecureApiController;
 use ddruganov\Yii2ApiAuth\http\filters\RbacFilter;
 use ddruganov\Yii2ApiEssentials\http\actions\ApiModelAction;
 
-final class PermissionController extends SecureApiController
+final class UserController extends SecureApiController
 {
     public function behaviors()
     {
@@ -17,9 +17,9 @@ final class PermissionController extends SecureApiController
             'rbac' => [
                 'class' => RbacFilter::class,
                 'rules' => [
-                    'create' => 'hub.permission.create',
-                    'update' => 'hub.permission.edit',
-                    'delete' => 'hub.permission.delete',
+                    'create' => 'hub.user.create',
+                    'update' => 'hub.user.edit',
+                    'delete' => 'hub.user.delete',
                 ]
             ]
         ]);

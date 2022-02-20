@@ -16,5 +16,10 @@ return [
     // permissions
     'POST /api/v1/permissions' => 'permission/create',
     'PATCH /api/v1/permissions/<id:\d+>' => 'permission/update',
-    'DELETE /api/v1/permissions/<id:\d+>' => 'permission/delete'
+    'DELETE /api/v1/permissions/<id:\d+>' => 'permission/delete',
+
+    // users
+    'POST /api/v1/users' => 'user/create',
+    'PATCH /api/v1/users/<id:\d+>' => 'user/update',
+    'DELETE /api/v1/users/<id:\d+>' => 'user/delete'
 ];
