@@ -1,29 +1,30 @@
 <?php
 
-namespace api\graphql\rbac;
+namespace api\graphql\app;
 
 use api\graphql\GraphqlTypes;
-use ddruganov\Yii2ApiAuth\models\rbac\Permission;
 use GraphQL\Type\Definition\ObjectType;
 
-final class PermissionGql extends ObjectType
+final class AppGql extends ObjectType
 {
     public function __construct()
     {
         $config = [
             'fields' => fn () => [
                 'id' => [
-                    'type' => GraphqlTypes::int()
+                    'type' => GraphqlTypes::string()
                 ],
                 'name' => [
                     'type' => GraphqlTypes::string(),
                 ],
-                'description' => [
+                'alias' => [
+                    'type' => GraphqlTypes::string()
+                ],
+                'url' => [
                     'type' => GraphqlTypes::string(),
                 ],
-                'appId' => [
-                    'type' => GraphqlTypes::string(),
-                    'resolve' => fn (Permission $permission) => $permission->getAppId()
+                'isDefault' => [
+                    'type' => GraphqlTypes::boolean()
                 ]
             ]
         ];

@@ -1,7 +1,7 @@
 <?php
 
-use api\components\RbacComponent;
 use ddruganov\Yii2ApiAuth\components\AuthComponent;
+use ddruganov\Yii2ApiAuth\components\RbacComponent;
 use yii\helpers\ArrayHelper;
 
 $commonConfig = require Yii::getAlias('@common/config/main.php');

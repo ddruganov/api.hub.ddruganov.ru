@@ -2,6 +2,7 @@
 
 namespace console\migrations;
 
+use ddruganov\Yii2ApiAuth\models\App;
 use ddruganov\Yii2ApiAuth\models\rbac\Permission;
 use ddruganov\Yii2ApiEssentials\DateHelper;
 use Yii;
@@ -24,7 +25,10 @@ class M220220125914CreateBasicUserRole extends Migration
         $this->batchInsert('rbac.role_has_permission', [
             'role_id', 'permission_id'
         ], [
-            [$roleId, Permission::find()->select(['id'])->where(['name' => 'hub.authenticate'])]
+            [$roleId, Permission::find()->select(['id'])->where([
+                'app_id' => App::default()->getId(),
+                'name' => 'authenticate'
+            ])]
         ]);
     }
 

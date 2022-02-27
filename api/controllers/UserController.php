@@ -17,9 +17,9 @@ final class UserController extends SecureApiController
             'rbac' => [
                 'class' => RbacFilter::class,
                 'rules' => [
-                    'create' => 'hub.user.create',
-                    'update' => 'hub.user.edit',
-                    'delete' => 'hub.user.delete',
+                    'create' => 'user.create',
+                    'update' => 'user.edit',
+                    'delete' => 'user.delete',
                 ]
             ]
         ]);

@@ -17,9 +17,9 @@ final class PermissionController extends SecureApiController
             'rbac' => [
                 'class' => RbacFilter::class,
                 'rules' => [
-                    'create' => 'hub.permission.create',
-                    'update' => 'hub.permission.edit',
-                    'delete' => 'hub.permission.delete',
+                    'create' => 'permission.create',
+                    'update' => 'permission.edit',
+                    'delete' => 'permission.delete',
                 ]
             ]
         ]);

@@ -3,6 +3,7 @@
 namespace api\graphql;
 
 use api\models\user\User;
+use ddruganov\Yii2ApiAuth\models\App;
 use ddruganov\Yii2ApiAuth\models\rbac\Permission;
 use ddruganov\Yii2ApiAuth\models\rbac\Role;
 use GraphQL\Type\Definition\ObjectType;
@@ -40,6 +41,10 @@ final class QueryGql extends ObjectType
                     'args' => ['id' => GraphqlTypes::nonNull(GraphqlTypes::int())],
                     'resolve' => fn ($_, $args) => User::findOne($args['id'])
                 ],
+                'apps' => [
+                    'type' => GraphqlTypes::listOf(GraphqlTypes::appType()),
+                    'resolve' => fn () => App::find()->orderBy(['id' => SORT_DESC])->all()
+                ]
             ]
         ];
 

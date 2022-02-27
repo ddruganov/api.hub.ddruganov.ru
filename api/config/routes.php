@@ -2,6 +2,7 @@
 
 return [
     'POST /api/v1/auth/login' => 'auth/login',
+    'POST /api/v1/auth/login-into' => 'auth/login-into',
     'POST /api/v1/auth/signup' => 'auth/signup',
     'POST /api/v1/auth/logout' => 'auth/logout',
     'POST /api/v1/auth/refresh' => 'auth/refresh',
