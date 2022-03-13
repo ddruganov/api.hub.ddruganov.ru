@@ -6,8 +6,7 @@ use api\collectors\auth\CurrentUserCollector;
 use api\forms\auth\LoginIntoForm;
 use api\forms\auth\SignupForm;
 use ddruganov\Yii2ApiAuth\http\controllers\AuthController as BaseAuthController;
-use ddruganov\Yii2ApiEssentials\http\actions\ApiModelAction;
-use ddruganov\Yii2ApiEssentials\http\actions\CollectorAction;
+use ddruganov\Yii2ApiEssentials\http\actions\FormAction;
 
 final class AuthController extends BaseAuthController
 {
@@ -28,16 +27,16 @@ final class AuthController extends BaseAuthController
     {
         return array_merge(parent::actions(), [
             'login-into' => [
-                'class' => ApiModelAction::class,
-                'modelClass' => LoginIntoForm::class
+                'class' => FormAction::class,
+                'formClass' => LoginIntoForm::class
             ],
             'signup' => [
-                'class' => ApiModelAction::class,
-                'modelClass' => SignupForm::class
+                'class' => FormAction::class,
+                'formClass' => SignupForm::class
             ],
             'current-user' => [
-                'class' => CollectorAction::class,
-                'collectorClass' => CurrentUserCollector::class
+                'class' => FormAction::class,
+                'formClass' => CurrentUserCollector::class
             ]
         ]);
     }

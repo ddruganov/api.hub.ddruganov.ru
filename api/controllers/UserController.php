@@ -7,7 +7,7 @@ use api\forms\user\DeleteForm;
 use api\forms\user\UpdateForm;
 use ddruganov\Yii2ApiAuth\http\controllers\SecureApiController;
 use ddruganov\Yii2ApiAuth\http\filters\RbacFilter;
-use ddruganov\Yii2ApiEssentials\http\actions\ApiModelAction;
+use ddruganov\Yii2ApiEssentials\http\actions\FormAction;
 
 final class UserController extends SecureApiController
 {
@@ -29,16 +29,16 @@ final class UserController extends SecureApiController
     {
         return [
             'create' => [
-                'class' => ApiModelAction::class,
-                'modelClass' => CreateForm::class
+                'class' => FormAction::class,
+                'formClass' => CreateForm::class
             ],
             'update' => [
-                'class' => ApiModelAction::class,
-                'modelClass' => UpdateForm::class
+                'class' => FormAction::class,
+                'formClass' => UpdateForm::class
             ],
             'delete' => [
-                'class' => ApiModelAction::class,
-                'modelClass' => DeleteForm::class
+                'class' => FormAction::class,
+                'formClass' => DeleteForm::class
             ],
         ];
     }

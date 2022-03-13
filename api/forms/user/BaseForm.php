@@ -6,10 +6,10 @@ use api\models\user\User;
 use ddruganov\Yii2ApiAuth\models\rbac\Role;
 use ddruganov\Yii2ApiAuth\models\rbac\UserHasRole;
 use ddruganov\Yii2ApiEssentials\ExecutionResult;
-use ddruganov\Yii2ApiEssentials\models\AbstractApiModel;
+use ddruganov\Yii2ApiEssentials\forms\AbstractForm;
 use yii\base\Model;
 
-abstract class BaseForm extends AbstractApiModel
+abstract class BaseForm extends AbstractForm
 {
     public ?string $email = null;
     public ?string $name = null;
@@ -35,11 +35,8 @@ abstract class BaseForm extends AbstractApiModel
         ];
     }
 
-    public function run(): ExecutionResult
+    protected function _run(): ExecutionResult
     {
-        if (!$this->validate()) {
-            return ExecutionResult::failure($this->getFirstErrors());
-        }
         $model = $this->getModel();
         $model->setAttributes([
             'email' => $this->email,

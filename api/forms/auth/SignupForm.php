@@ -5,9 +5,9 @@ namespace api\forms\auth;
 use api\forms\user\CreateForm;
 use ddruganov\Yii2ApiAuth\models\rbac\Role;
 use ddruganov\Yii2ApiEssentials\ExecutionResult;
-use ddruganov\Yii2ApiEssentials\models\AbstractApiModel;
+use ddruganov\Yii2ApiEssentials\forms\AbstractForm;
 
-final class SignupForm extends AbstractApiModel
+final class SignupForm extends AbstractForm
 {
     public ?string $email = null;
     public ?string $name = null;
@@ -20,7 +20,7 @@ final class SignupForm extends AbstractApiModel
         ];
     }
 
-    public function run(): ExecutionResult
+    protected function _run(): ExecutionResult
     {
         $userCreationForm = new CreateForm([
             'email' => $this->email,

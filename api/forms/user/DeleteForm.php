@@ -4,9 +4,9 @@ namespace api\forms\user;
 
 use api\models\user\User;
 use ddruganov\Yii2ApiEssentials\ExecutionResult;
-use ddruganov\Yii2ApiEssentials\models\AbstractApiModel;
+use ddruganov\Yii2ApiEssentials\forms\AbstractForm;
 
-class DeleteForm extends AbstractApiModel
+final class DeleteForm extends AbstractForm
 {
     public int $id;
 
@@ -17,12 +17,8 @@ class DeleteForm extends AbstractApiModel
         ];
     }
 
-    public function run(): ExecutionResult
+    protected function _run(): ExecutionResult
     {
-        if (!$this->validate()) {
-            return ExecutionResult::failure($this->getFirstErrors());
-        }
-
         $model = User::findOne($this->id);
         if ($model->delete() === false) {
             return ExecutionResult::exception('Ошибка удаления пользователя');

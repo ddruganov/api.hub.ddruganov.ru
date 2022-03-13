@@ -40,10 +40,10 @@ class M220206072836AddApps extends Migration
 
         foreach ($appConfigs as $appConfig) {
             $this->insert($this->getTableName(), $appConfig);
-            $appId = (new Query())->from($this->getTableName())->select(['id'])->where($appConfig)->scalar();
+            $appUuid = (new Query())->from($this->getTableName())->select(['uuid'])->where($appConfig)->scalar();
 
             $this->insert('rbac.permission', [
-                'app_id' => $appId,
+                'app_uuid' => $appUuid,
                 'name' => 'authenticate',
                 'description' => 'Вход в ' . $appConfig['name'],
                 'created_at' => DateHelper::now(),

@@ -2,20 +2,21 @@
 
 namespace api\collectors\auth;
 
-use ddruganov\Yii2ApiEssentials\collectors\AbstractDataCollector;
+use ddruganov\Yii2ApiEssentials\ExecutionResult;
+use ddruganov\Yii2ApiEssentials\forms\AbstractForm;
 use Yii;
 
-final class CurrentUserCollector extends AbstractDataCollector
+final class CurrentUserCollector extends AbstractForm
 {
-    protected function internalRun(): array
+    protected function _run(): ExecutionResult
     {
         /** @var \api\models\user\User */
         $user = Yii::$app->get('auth')->getCurrentUser();
 
-        return [
+        return ExecutionResult::success([
             'id' => $user->getId(),
             'email' => $user->getEmail(),
             'name' => $user->getName()
-        ];
+        ]);
     }
 }

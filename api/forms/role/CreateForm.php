@@ -6,9 +6,9 @@ use ddruganov\Yii2ApiAuth\models\rbac\Permission;
 use ddruganov\Yii2ApiAuth\models\rbac\Role;
 use ddruganov\Yii2ApiAuth\models\rbac\RoleHasPermission;
 use ddruganov\Yii2ApiEssentials\ExecutionResult;
-use ddruganov\Yii2ApiEssentials\models\AbstractApiModel;
+use ddruganov\Yii2ApiEssentials\forms\AbstractForm;
 
-class CreateForm extends AbstractApiModel
+class CreateForm extends AbstractForm
 {
     public ?string $name = null;
     public ?string $description = null;
@@ -32,12 +32,8 @@ class CreateForm extends AbstractApiModel
         ];
     }
 
-    public function run(): ExecutionResult
+    protected function _run(): ExecutionResult
     {
-        if (!$this->validate()) {
-            return ExecutionResult::failure($this->getFirstErrors());
-        }
-
         $model = $this->getModel();
         $model->setAttributes([
             'name' => $this->name,

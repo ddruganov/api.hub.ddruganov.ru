@@ -4,10 +4,10 @@ namespace api\forms\auth;
 
 use ddruganov\Yii2ApiAuth\models\App;
 use ddruganov\Yii2ApiEssentials\ExecutionResult;
-use ddruganov\Yii2ApiEssentials\models\AbstractApiModel;
+use ddruganov\Yii2ApiEssentials\forms\AbstractForm;
 use Yii;
 
-final class LoginIntoForm extends AbstractApiModel
+final class LoginIntoForm extends AbstractForm
 {
     public string $appId;
 
@@ -18,12 +18,8 @@ final class LoginIntoForm extends AbstractApiModel
         ];
     }
 
-    public function run(): ExecutionResult
+    protected function _run(): ExecutionResult
     {
-        if (!$this->validate()) {
-            return ExecutionResult::failure($this->getFirstErrors());
-        }
-
         $auth = Yii::$app->get('auth');
 
         return $auth->login($auth->getCurrentUser(), $this->getApp());

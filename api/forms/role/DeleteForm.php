@@ -5,9 +5,9 @@ namespace api\forms\role;
 use ddruganov\Yii2ApiAuth\models\rbac\Role;
 use ddruganov\Yii2ApiAuth\models\rbac\RoleHasPermission;
 use ddruganov\Yii2ApiEssentials\ExecutionResult;
-use ddruganov\Yii2ApiEssentials\models\AbstractApiModel;
+use ddruganov\Yii2ApiEssentials\forms\AbstractForm;
 
-class DeleteForm extends AbstractApiModel
+class DeleteForm extends AbstractForm
 {
     public int $id;
 
@@ -18,12 +18,8 @@ class DeleteForm extends AbstractApiModel
         ];
     }
 
-    public function run(): ExecutionResult
+    protected function _run(): ExecutionResult
     {
-        if (!$this->validate()) {
-            return ExecutionResult::failure($this->getFirstErrors());
-        }
-
         $model = Role::findOne($this->id);
         if ($model->delete() === false) {
             return ExecutionResult::exception('Ошибка удаления роли');

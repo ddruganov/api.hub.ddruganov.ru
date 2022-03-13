@@ -1,6 +1,6 @@
 FROM php:8.0-fpm-alpine
 
-RUN apk add postgresql-dev
+RUN apk add postgresql-dev zsh
 
 RUN docker-php-ext-install pdo pdo_pgsql
 

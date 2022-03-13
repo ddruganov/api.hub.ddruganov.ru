@@ -26,7 +26,7 @@ class M220220125914CreateBasicUserRole extends Migration
             'role_id', 'permission_id'
         ], [
             [$roleId, Permission::find()->select(['id'])->where([
-                'app_id' => App::default()->getId(),
+                'app_uuid' => App::default()->getUuid(),
                 'name' => 'authenticate'
             ])]
         ]);
