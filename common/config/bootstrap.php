@@ -6,3 +6,4 @@ Yii::setAlias('@common', Yii::getAlias('@root/common'));
 Yii::setAlias('@console', Yii::getAlias('@root/console'));
 Yii::setAlias('@vendor', Yii::getAlias('@root/vendor'));
 Yii::setAlias('@logs', Yii::getAlias('@root/logs'));
+Yii::setAlias('@tests', Yii::getAlias('@root/tests'));

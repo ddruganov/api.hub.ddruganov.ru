@@ -2,6 +2,7 @@
 
 namespace api\forms\auth;
 
+use ddruganov\Yii2ApiAuth\components\AuthComponentInterface;
 use ddruganov\Yii2ApiAuth\models\App;
 use ddruganov\Yii2ApiEssentials\ExecutionResult;
 use ddruganov\Yii2ApiEssentials\forms\AbstractForm;
@@ -20,7 +21,7 @@ final class LoginIntoForm extends AbstractForm
 
     protected function _run(): ExecutionResult
     {
-        $auth = Yii::$app->get('auth');
+        $auth = Yii::$app->get(AuthComponentInterface::class);
 
         return $auth->login($auth->getCurrentUser(), $this->getApp());
     }

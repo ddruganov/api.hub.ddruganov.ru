@@ -1,7 +1,9 @@
 <?php
 
 use ddruganov\Yii2ApiAuth\components\AuthComponent;
+use ddruganov\Yii2ApiAuth\components\AuthComponentInterface;
 use ddruganov\Yii2ApiAuth\components\RbacComponent;
+use ddruganov\Yii2ApiAuth\components\RbacComponentInterface;
 use yii\helpers\ArrayHelper;
 
 $commonConfig = require Yii::getAlias('@common/config/main.php');
@@ -17,8 +19,8 @@ return ArrayHelper::merge($commonConfig, [
             'enableStrictParsing' => true,
             'rules' => require 'routes.php'
         ],
-        'auth' => AuthComponent::class,
-        'rbac' => RbacComponent::class
+        AuthComponentInterface::class => AuthComponent::class,
+        RbacComponentInterface::class => RbacComponent::class
     ],
     'params' => require 'params.php',
 ]);

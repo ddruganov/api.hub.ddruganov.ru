@@ -1,32 +1,38 @@
 {
-  "name": "ddruganov/api.hub.ddruganov.ru",
-  "description": "Yii 2 Api Project Template",
-  "keywords": [
-    "yii2",
-    "api",
-    "project template"
-  ],
-  "type": "project",
-  "minimum-stability": "stable",
-  "require": {
-    "php": "^8",
-    "yiisoft/yii2": "^2",
-    "ddruganov/yii2-api-auth": "^1",
-    "webonyx/graphql-php": "^14.11"
-  },
-  "config": {
-    "process-timeout": 1800,
-    "fxp-asset": {
-      "enabled": false
+    "name": "ddruganov/api.hub.ddruganov.ru",
+    "description": "Yii 2 Api Project Template",
+    "keywords": [
+        "yii2",
+        "api",
+        "project template"
+    ],
+    "type": "project",
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8",
+        "yiisoft/yii2": "^2",
+        "ddruganov/yii2-api-auth": "^1",
+        "webonyx/graphql-php": "^14.11"
     },
-    "allow-plugins": {
-      "yiisoft/yii2-composer": true
+    "config": {
+        "process-timeout": 1800,
+        "fxp-asset": {
+            "enabled": false
+        },
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "require-dev": {
+        "codeception/codeception": "^4.1",
+        "fakerphp/faker": "^1.19",
+        "codeception/module-phpbrowser": "^1.0.0",
+        "codeception/module-asserts": "^1.0.0"
     }
-  },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://asset-packagist.org"
-    }
-  ]
 }
