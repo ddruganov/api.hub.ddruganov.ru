@@ -4,9 +4,9 @@ namespace api\forms\user;
 
 use api\models\user\User;
 use ddruganov\Yii2ApiEssentials\ExecutionResult;
-use ddruganov\Yii2ApiEssentials\forms\AbstractForm;
+use ddruganov\Yii2ApiEssentials\forms\Form;
 
-final class DeleteForm extends AbstractForm
+final class DeleteForm extends Form
 {
     public int $id;
 

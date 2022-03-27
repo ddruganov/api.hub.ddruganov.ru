@@ -5,9 +5,9 @@ namespace api\forms\permission;
 use ddruganov\Yii2ApiAuth\models\rbac\Permission;
 use ddruganov\Yii2ApiAuth\models\rbac\RoleHasPermission;
 use ddruganov\Yii2ApiEssentials\ExecutionResult;
-use ddruganov\Yii2ApiEssentials\forms\AbstractForm;
+use ddruganov\Yii2ApiEssentials\forms\Form;
 
-class DeleteForm extends AbstractForm
+class DeleteForm extends Form
 {
     public int $id;
 

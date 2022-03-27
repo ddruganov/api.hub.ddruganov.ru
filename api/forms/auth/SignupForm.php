@@ -3,11 +3,13 @@
 namespace api\forms\auth;
 
 use api\forms\user\CreateForm;
+use ddruganov\Yii2ApiAuth\forms\auth\LoginForm;
+use ddruganov\Yii2ApiAuth\models\App;
 use ddruganov\Yii2ApiAuth\models\rbac\Role;
 use ddruganov\Yii2ApiEssentials\ExecutionResult;
-use ddruganov\Yii2ApiEssentials\forms\AbstractForm;
+use ddruganov\Yii2ApiEssentials\forms\Form;
 
-final class SignupForm extends AbstractForm
+final class SignupForm extends Form
 {
     public ?string $email = null;
     public ?string $name = null;
@@ -34,6 +36,11 @@ final class SignupForm extends AbstractForm
             return $result;
         }
 
-        return ExecutionResult::success();
+        $loginForm = new LoginForm([
+            'email' => $this->email,
+            'password' => $this->password,
+            'appUuid' => App::default()->getUuid()
+        ]);
+        return $loginForm->run();
     }
 }

@@ -5,10 +5,10 @@ namespace api\forms\auth;
 use ddruganov\Yii2ApiAuth\components\AuthComponentInterface;
 use ddruganov\Yii2ApiAuth\models\App;
 use ddruganov\Yii2ApiEssentials\ExecutionResult;
-use ddruganov\Yii2ApiEssentials\forms\AbstractForm;
+use ddruganov\Yii2ApiEssentials\forms\Form;
 use Yii;
 
-final class LoginIntoForm extends AbstractForm
+final class LoginIntoForm extends Form
 {
     public string $appId;
 

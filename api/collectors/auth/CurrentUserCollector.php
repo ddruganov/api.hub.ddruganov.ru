@@ -4,10 +4,10 @@ namespace api\collectors\auth;
 
 use ddruganov\Yii2ApiAuth\components\AuthComponentInterface;
 use ddruganov\Yii2ApiEssentials\ExecutionResult;
-use ddruganov\Yii2ApiEssentials\forms\AbstractForm;
+use ddruganov\Yii2ApiEssentials\forms\Form;
 use Yii;
 
-final class CurrentUserCollector extends AbstractForm
+final class CurrentUserCollector extends Form
 {
     protected function _run(): ExecutionResult
     {

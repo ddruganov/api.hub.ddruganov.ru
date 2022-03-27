@@ -6,10 +6,10 @@ use api\models\user\User;
 use ddruganov\Yii2ApiAuth\models\rbac\Role;
 use ddruganov\Yii2ApiAuth\models\rbac\UserHasRole;
 use ddruganov\Yii2ApiEssentials\ExecutionResult;
-use ddruganov\Yii2ApiEssentials\forms\AbstractForm;
+use ddruganov\Yii2ApiEssentials\forms\Form;
 use yii\base\Model;
 
-abstract class BaseForm extends AbstractForm
+abstract class BaseForm extends Form
 {
     public ?string $email = null;
     public ?string $name = null;
@@ -64,7 +64,9 @@ abstract class BaseForm extends AbstractForm
             }
         }
 
-        return ExecutionResult::success();
+        return ExecutionResult::success([
+            'id' => $model->getId()
+        ]);
     }
 
     protected function getModel()

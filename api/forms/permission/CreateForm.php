@@ -5,9 +5,9 @@ namespace api\forms\permission;
 use ddruganov\Yii2ApiAuth\models\App;
 use ddruganov\Yii2ApiAuth\models\rbac\Permission;
 use ddruganov\Yii2ApiEssentials\ExecutionResult;
-use ddruganov\Yii2ApiEssentials\forms\AbstractForm;
+use ddruganov\Yii2ApiEssentials\forms\Form;
 
-class CreateForm extends AbstractForm
+class CreateForm extends Form
 {
     public ?string $name = null;
     public ?string $description = null;
