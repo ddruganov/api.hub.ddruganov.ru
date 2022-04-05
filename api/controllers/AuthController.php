@@ -19,10 +19,8 @@ final class AuthController extends BaseAuthController
                     'exceptions' => ['signup']
                 ],
                 'rbac' => [
-                    'rules' => [
-                        'current-user' => 'authenticate',
-                        'exceptions' => ['signup']
-                    ]
+                    'rules' => ['current-user' => 'authenticate'],
+                    'exceptions' => ['signup']
                 ]
             ]
         );
@@ -30,7 +28,7 @@ final class AuthController extends BaseAuthController
 
     public function actions()
     {
-        return array_merge(parent::actions(), [
+        return ArrayHelper::merge(parent::actions(), [
             'signup' => [
                 'class' => FormAction::class,
                 'formClass' => SignupForm::class
