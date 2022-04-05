@@ -18,7 +18,8 @@ return ArrayHelper::merge(
                 'refresh' => [
                     'ttl' => 60 * 60 * 24 * 30 // seconds
                 ]
-            ]
+            ],
+            'maxActiveSessions' => 3
         ]
     ],
     file_exists(Yii::getAlias('@api/config/params-local.php')) ? require Yii::getAlias('@api/config/params-local.php') : []

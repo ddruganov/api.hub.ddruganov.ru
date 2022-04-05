@@ -41,6 +41,11 @@ final class SignupForm extends Form
             'password' => $this->password,
             'appUuid' => App::default()->getUuid()
         ]);
-        return $loginForm->run();
+        $result = $loginForm->run();
+        if (!$result->isSuccessful()) {
+            return ExecutionResult::exception('Ошибка автоматической авторизации пользователя');
+        }
+
+        return $result;
     }
 }
