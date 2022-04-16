@@ -17,7 +17,8 @@ final class CurrentUserCollector extends Form
         return ExecutionResult::success([
             'id' => $user->getId(),
             'email' => $user->getEmail(),
-            'name' => $user->getName()
+            'name' => $user->getName(),
+            'isBanned' => $user->isBanned()
         ]);
     }
 }

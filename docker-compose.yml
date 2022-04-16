@@ -1,34 +1,41 @@
 version: "3.8"
 
+networks:
+    ddruganovru:
+        external: true
+
 services:
-  nginx:
-    container_name: api.hub.ddruganov.ru.nginx
-    ports:
-      - 2000:8080
-    image: nginx:stable-alpine
-    volumes:
-      - ./:/app
-      - ./docker/nginx:/etc/nginx/conf.d
-    depends_on:
-      - php
+    api.hub.ddruganov.ru.nginx:
+        networks:
+            - ddruganovru
+        ports:
+            - 2000:2000
+        image: nginx:stable-alpine
+        volumes:
+            - ./:/app
+            - ./docker/nginx:/etc/nginx/conf.d
+        depends_on:
+            - php
 
-  php:
-    container_name: api.hub.ddruganov.ru.php
-    build: ./docker/php
-    volumes:
-      - ./:/app
-    depends_on:
-      - db
-    restart: unless-stopped
+    api.hub.ddruganov.ru.php:
+        networks:
+            - ddruganovru
+        build: ./docker/php
+        volumes:
+            - ./:/app
+        depends_on:
+            - db
+        restart: unless-stopped
 
-  db:
-    container_name: api.hub.ddruganov.ru.db
-    build: ./docker/postgres
-    ports:
-      - 2001:5432
-    restart: always
-    volumes:
-      - api.hub.ddruganov.ru.db-data:/var/lib/postgresql/data
+    api.hub.ddruganov.ru.db:
+        networks:
+            - ddruganovru
+        build: ./docker/postgres
+        ports:
+            - 2001:5432
+        restart: always
+        volumes:
+            - api.hub.ddruganov.ru.db-data:/var/lib/postgresql/data
 
 volumes:
-  api.hub.ddruganov.ru.db-data:
+    api.hub.ddruganov.ru.db-data:

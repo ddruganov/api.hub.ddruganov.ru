@@ -1,6 +1,6 @@
 <?php
 
-use ddruganov\Yii2ApiAuth\components\AuthComponent;
+use api\components\auth\AuthComponent;
 use ddruganov\Yii2ApiAuth\components\AuthComponentInterface;
 use ddruganov\Yii2ApiAuth\components\RbacComponent;
 use ddruganov\Yii2ApiAuth\components\RbacComponentInterface;
