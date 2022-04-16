@@ -4,6 +4,7 @@ use ddruganov\Yii2ApiAuth\components\AuthComponent;
 use ddruganov\Yii2ApiAuth\components\AuthComponentInterface;
 use ddruganov\Yii2ApiAuth\components\RbacComponent;
 use ddruganov\Yii2ApiAuth\components\RbacComponentInterface;
+use ddruganov\Yii2ApiAuth\http\controllers\AppController;
 use yii\helpers\ArrayHelper;
 
 return ArrayHelper::merge(
@@ -21,6 +22,9 @@ return ArrayHelper::merge(
             ],
             AuthComponentInterface::class => AuthComponent::class,
             RbacComponentInterface::class => RbacComponent::class
+        ],
+        'controllerMap' => [
+            'app' => AppController::class
         ],
         'params' => require 'params.php',
     ],

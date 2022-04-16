@@ -23,5 +23,9 @@ return [
     // users
     'POST /api/v1/users' => 'user/create',
     'PATCH /api/v1/users/<id:\d+>' => 'user/update',
-    'DELETE /api/v1/users/<id:\d+>' => 'user/delete'
+    'DELETE /api/v1/users/<id:\d+>' => 'user/delete',
+
+    // app
+    'GET /api/v1/app/list' => 'app/list',
+    'GET /api/v1/app/one' => 'app/one',
 ];

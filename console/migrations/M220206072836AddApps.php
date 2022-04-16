@@ -19,7 +19,7 @@ class M220206072836AddApps extends Migration
         $this->update($this->getTableName(), [
             'name' => 'Hub',
             'alias' => 'hub',
-            'url' => 'http://localhost:3000'
+            'base_url' => 'http://localhost:3000'
         ], ['is_default' => true]);
 
         $appConfigs = [
@@ -27,20 +27,26 @@ class M220206072836AddApps extends Migration
                 'name' => 'PAcc',
                 'alias' => 'pacc',
                 'audience' => 'localhost',
-                'url' => 'http://localhost:4000',
-                'is_default' => false
+                'base_url' => 'http://localhost:4000',
+                'is_default' => null,
+                'created_at' => DateHelper::now()
             ], [
                 'name' => 'LinkToMe',
                 'alias' => 'linktome',
                 'audience' => 'localhost',
-                'url' => 'http://localhost:5000',
-                'is_default' => false
+                'base_url' => 'http://localhost:5000',
+                'is_default' => null,
+                'created_at' => DateHelper::now()
             ],
         ];
 
         foreach ($appConfigs as $appConfig) {
             $this->insert($this->getTableName(), $appConfig);
-            $appUuid = (new Query())->from($this->getTableName())->select(['uuid'])->where($appConfig)->scalar();
+            $appUuid = (new Query())
+                ->from($this->getTableName())
+                ->select(['uuid'])
+                ->where($appConfig)
+                ->scalar();
 
             $this->insert('rbac.permission', [
                 'app_uuid' => $appUuid,
@@ -60,7 +66,7 @@ class M220206072836AddApps extends Migration
 
     public function safeDown()
     {
-        $this->delete($this->getTableName(), ['is_default' => false]);
+        $this->delete($this->getTableName(), ['is_default' => null]);
         return true;
     }
 }
