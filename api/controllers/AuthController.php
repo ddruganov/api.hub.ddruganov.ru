@@ -19,7 +19,6 @@ final class AuthController extends BaseAuthController
                     'exceptions' => ['signup']
                 ],
                 'rbac' => [
-                    'rules' => ['current-user' => 'authenticate'],
                     'exceptions' => ['signup']
                 ]
             ]

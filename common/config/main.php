@@ -11,7 +11,7 @@ return ArrayHelper::merge(
         'components' => [
             'log' => [
                 'targets' => [
-                    [
+                    'main' => [
                         'class' => FileTarget::class,
                         'categories' => ['application'],
                         'logVars' => [],

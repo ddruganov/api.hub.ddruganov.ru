@@ -2,12 +2,12 @@
 
 namespace api\collectors\auth;
 
+use ddruganov\Yii2ApiAuth\collectors\user\CurrentUserCollector as BaseCurrentUserCollector;
 use ddruganov\Yii2ApiAuth\components\AuthComponentInterface;
 use ddruganov\Yii2ApiEssentials\ExecutionResult;
-use ddruganov\Yii2ApiEssentials\forms\Form;
 use Yii;
 
-final class CurrentUserCollector extends Form
+final class CurrentUserCollector extends BaseCurrentUserCollector
 {
     protected function _run(): ExecutionResult
     {
