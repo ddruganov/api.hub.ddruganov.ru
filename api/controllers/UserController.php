@@ -2,32 +2,26 @@
 
 namespace api\controllers;
 
+use api\collectors\user\UserAllCollector;
+use api\collectors\user\UserOneCollector;
 use api\forms\user\CreateForm;
-use api\forms\user\DeleteForm;
 use api\forms\user\UpdateForm;
-use ddruganov\Yii2ApiAuth\http\controllers\SecureApiController;
-use ddruganov\Yii2ApiAuth\http\filters\RbacFilter;
+use ddruganov\Yii2ApiAuth\http\controllers\UserController as BaseUserController;
 use ddruganov\Yii2ApiEssentials\http\actions\FormAction;
 
-final class UserController extends SecureApiController
+final class UserController extends BaseUserController
 {
-    public function behaviors()
-    {
-        return array_merge(parent::behaviors(), [
-            'rbac' => [
-                'class' => RbacFilter::class,
-                'rules' => [
-                    'create' => 'user.create',
-                    'update' => 'user.edit',
-                    'delete' => 'user.delete',
-                ]
-            ]
-        ]);
-    }
-
     public function actions()
     {
         return [
+            'all' => [
+                'class' => FormAction::class,
+                'formClass' => UserAllCollector::class
+            ],
+            'one' => [
+                'class' => FormAction::class,
+                'formClass' => UserOneCollector::class
+            ],
             'create' => [
                 'class' => FormAction::class,
                 'formClass' => CreateForm::class
@@ -35,11 +29,7 @@ final class UserController extends SecureApiController
             'update' => [
                 'class' => FormAction::class,
                 'formClass' => UpdateForm::class
-            ],
-            'delete' => [
-                'class' => FormAction::class,
-                'formClass' => DeleteForm::class
-            ],
+            ]
         ];
     }
 }
