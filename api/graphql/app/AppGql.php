@@ -11,7 +11,7 @@ final class AppGql extends ObjectType
     {
         $config = [
             'fields' => fn () => [
-                'id' => [
+                'uuid' => [
                     'type' => GraphqlTypes::string()
                 ],
                 'name' => [
@@ -20,7 +20,7 @@ final class AppGql extends ObjectType
                 'alias' => [
                     'type' => GraphqlTypes::string()
                 ],
-                'url' => [
+                'baseUrl' => [
                     'type' => GraphqlTypes::string(),
                 ],
                 'isDefault' => [

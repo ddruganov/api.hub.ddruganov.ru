@@ -25,7 +25,7 @@ final class QueryGql extends ObjectType
                 ],
                 'permissions' => [
                     'type' => GraphqlTypes::listOf(GraphqlTypes::permissionType()),
-                    'resolve' => fn () => Permission::find()->orderBy(['name' => SORT_ASC])->all()
+                    'resolve' => fn () => Permission::find()->orderBy(['created_at' => SORT_ASC])->all()
                 ],
                 'permission' => [
                     'type' => GraphqlTypes::permissionType(),
@@ -43,7 +43,7 @@ final class QueryGql extends ObjectType
                 ],
                 'apps' => [
                     'type' => GraphqlTypes::listOf(GraphqlTypes::appType()),
-                    'resolve' => fn () => App::find()->orderBy(['id' => SORT_DESC])->all()
+                    'resolve' => fn () => App::find()->orderBy(['created_at' => SORT_DESC])->all()
                 ]
             ]
         ];

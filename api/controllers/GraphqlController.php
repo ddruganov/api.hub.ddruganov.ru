@@ -9,9 +9,21 @@ use ddruganov\Yii2ApiEssentials\http\actions\ApiAction;
 use ddruganov\Yii2ApiEssentials\http\actions\ClosureAction;
 use GraphQL\GraphQL;
 use GraphQL\Type\Schema;
+use yii\helpers\ArrayHelper;
 
 final class GraphqlController extends SecureApiController
 {
+    public function behaviors()
+    {
+        return ArrayHelper::merge(parent::behaviors(), [
+            'rbac' => [
+                'rules' => [
+                    'index' => 'graphql.read',
+                ]
+            ]
+        ]);
+    }
+
     public function actions()
     {
         return [

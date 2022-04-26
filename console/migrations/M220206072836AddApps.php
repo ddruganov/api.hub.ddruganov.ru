@@ -38,8 +38,8 @@ class M220206072836AddApps extends Migration
                 'is_default' => null,
                 'created_at' => DateHelper::now()
             ], [
-                'name' => 'ToDo',
-                'alias' => 'todo',
+                'name' => 'Blog',
+                'alias' => 'blog',
                 'audience' => 'localhost',
                 'base_url' => 'http://localhost:6000',
                 'is_default' => null,
