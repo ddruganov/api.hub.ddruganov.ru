@@ -28,6 +28,6 @@ return [
     'DELETE /api/v1/users/<id:\d+>' => 'user/delete',
 
     // app
-    'GET /api/v1/app/list' => 'app/list',
+    'GET /api/v1/app/all' => 'app/all',
     'GET /api/v1/app/one' => 'app/one',
 ];
