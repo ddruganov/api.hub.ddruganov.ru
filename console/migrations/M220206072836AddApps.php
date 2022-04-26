@@ -19,29 +19,29 @@ class M220206072836AddApps extends Migration
         $this->update($this->getTableName(), [
             'name' => 'Hub',
             'alias' => 'hub',
-            'base_url' => 'http://localhost:3000'
+            'base_url' => 'http://localhost:2010'
         ], ['is_default' => true]);
 
         $appConfigs = [
             [
-                'name' => 'PAcc',
-                'alias' => 'pacc',
+                'name' => 'Blog',
+                'alias' => 'blog',
                 'audience' => 'localhost',
-                'base_url' => 'http://localhost:4000',
+                'base_url' => 'http://localhost:3010',
                 'is_default' => null,
                 'created_at' => DateHelper::now()
             ], [
                 'name' => 'LinkToMe',
                 'alias' => 'linktome',
                 'audience' => 'localhost',
-                'base_url' => 'http://localhost:5000',
+                'base_url' => 'http://localhost:4010',
                 'is_default' => null,
                 'created_at' => DateHelper::now()
             ], [
-                'name' => 'Blog',
-                'alias' => 'blog',
+                'name' => 'PAcc',
+                'alias' => 'pacc',
                 'audience' => 'localhost',
-                'base_url' => 'http://localhost:6000',
+                'base_url' => 'http://localhost:5010',
                 'is_default' => null,
                 'created_at' => DateHelper::now()
             ],
